@@ -1,4 +1,4 @@
-# Card product ui component
+# Product card ui component
 
 Card product ui with only css.
 
