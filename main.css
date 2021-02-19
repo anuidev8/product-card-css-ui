@@ -1,0 +1,277 @@
+
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(245, 245, 245);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+ 
+    
+}
+
+.card{
+    --green-color:45,181,63;
+    --green-lima-color:48,203,114;
+    --green-light-color:4, 255, 222;
+    --paragraph-color:#838383;
+    width: 450px;
+    position: relative;
+    box-shadow: 0 1.2px 3px rgba(0,0,0,.15);
+    margin-top: 2em;
+}
+
+.card .button {
+    background: none;
+    border: 1px solid rgba(var(--green-color),1);
+    border-radius: 1.5em;
+    outline: none;
+    padding: .5em 1.4em;
+    color: rgba(var(--green-color),1);
+    font-size: 1em;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transform-origin: center;
+    transform: scale(1);
+    transition: color .15s, background-color .15s,transform .2s;
+    
+}
+.card .button svg{
+    fill: rgba(var(--green-color),1);
+    margin-left: 3px;
+    transform: translateX(0);
+    transition: transform .3s ease;
+}
+
+.card .button:hover{
+    color: white;
+    background-color: rgba(var(--green-color),1) ;
+   
+}
+.card .button:hover svg{
+    transform: translateX(8px);
+    fill: #fff;
+}
+
+.card__title{
+    font-size: 1.3em;
+    font-weight: 900;
+}
+.text-add{
+    margin:0;
+    margin-left: 2px;
+    margin-bottom: 10px;
+    font-size: .9em;
+    font-weight: 600;
+    color: var(--paragraph-color);
+    transform: translateY(-4px);
+
+}
+.paragraph{
+    color:var(--paragraph-color);
+    font-weight: 300;
+    margin: 0;
+}
+
+.card__header{
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    position: relative;
+  
+}
+
+.card__header::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://cdn.pixabay.com/photo/2016/11/29/06/16/apple-1867752_960_720.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: transform .3s;
+    z-index:1 ;
+}
+
+.card__header:hover:after{
+    transform: scale(1.18) rotate(5deg);
+}
+
+
+.card__header::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right,rgba(var(--green-lima-color),1) 40%,rgba(var(--green-light-color), 1) 90%);
+    opacity: .8;
+    z-index: 2;
+    transition: opacity .3s;
+
+}
+.card__header:hover:before{
+    opacity: .9;
+}
+
+.card__body,.card__description,.details{
+    padding: .2em  1.6em;
+    background-color: rgb(255, 255, 255);
+}
+
+.card__description{
+    height: 0;
+
+    overflow: hidden;
+    transition: height .3s ease;
+}
+
+.card__description p.text-description{
+    color: #b3b3b3;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+    margin-left: 3px;
+    margin-top: 8px;
+   
+}
+
+.card__actions{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+  
+    align-items: center;
+}
+.price{   
+    flex-grow: 2;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 0;
+    display: block;
+    letter-spacing: 1px;
+ 
+}
+
+ .price .price--off{ 
+    color: rgba(var(--green-color),1);
+    margin-right: 2px;
+}
+.price .price--on{
+    position: relative;
+    
+}
+.price .price--on::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 110%;
+    height: 1.2px;
+    background-color: black;
+}
+.card__actions .box-button {   
+    flex-grow: 1;
+}
+.bag{
+    position: relative;
+}
+
+.bag input#bag{
+  display: none;
+}
+
+.bag-icon{
+    height: 35px;
+    width:  35px;
+    border-radius: 50%;
+    border: 1.4px solid rgba(var(--green-color),1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: rgba(var(--green-color),1);
+    cursor: pointer;
+    transform-origin: center;
+    transform: scale(1);
+    transition: background-color .1s,transform .3s ease;
+   
+}
+.bag-total{
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    left: 75%;
+    top: -6%;
+    z-index: 2;
+    font-size: .8em;
+    color: rgba(var(--green-color),1);
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    animation: scaleto .4s ;
+    display: none;
+
+}
+
+
+.bag-icon:hover,.bag input#bag:checked + .bag-icon {
+    transform: scale(1.1);
+    background-color: rgba(var(--green-color),1);
+    fill: #fff;
+  
+}
+
+.bag input:checked ~ .bag-total{
+    display: block;
+}
+
+@keyframes scaleto{
+    0%{
+    transform:scale(0)  
+    }
+    100%{
+    transform:scale(1)
+    }
+}
+
+.open-descripton{
+    position: absolute;
+    bottom: -4%;
+    left: 50%;
+    fill: rgba(var(--green-color),1);
+    cursor: pointer;
+    transform-origin: center;
+    transform:translateX(-50%) rotate(0) ;
+    transition: transform .3s , bottom .1s;
+}
+
+input#open-description{
+  display: none;
+}
+
+input#open-description:checked ~ .card__description{
+    height: 125px;
+}
+input#open-description:checked ~ .open-descripton{
+    bottom: -3%;
+    transform-origin: center;
+    transform:translateX(-50%)  rotate(180deg);
+}
+
+
+@media (max-width:768px) {
+    .card{
+        width: 350px;
+    }
+    input#open-description:checked ~ .card__description{
+        height: 180px;
+    }
+    
+}
